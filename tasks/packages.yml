@@ -1,0 +1,13 @@
+---
+- name: Install favorite packages.
+  apt: >
+    pkg={{item}}
+    state=installed
+    update-cache=yes
+  with_items:
+    - git
+    - tree
+    - ipython
+  tags:
+    - packages
+
