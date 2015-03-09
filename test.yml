@@ -1,0 +1,10 @@
+---
+# include task for testing
+- hosts: testbox
+  tasks:
+    - name: whats up mang
+      shell: echo "DAWG"
+    - include_vars: vars/main.yml
+    - include: tasks/main.yml
+
+

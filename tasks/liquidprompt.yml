@@ -1,8 +1,17 @@
 ---
-- name: Ensure "gits" dir exists.
-  file: path=/home/vagrant/gits state=directory mode=0755 owner=vagrant group=vagrant
+- name: ensure git dir exists
+  file:
+    path: "{{git_directory}}"
+    state: directory
+    mode: 0750
+    owner: "{{username}}"
+  sudo: true
+  sudo_user: "{{username}}"
  
-- name: Clone liquidprompt git repository.
-  git: repo=https://github.com/nojhan/liquidprompt/ dest=gits/liquidprompt
-  sudo: false
-
+- name: clone liquidprompt git repository.
+  git:
+    repo: https://github.com/nojhan/liquidprompt/
+    dest: "~{{username}}/.homesick/repos/liquidprompt"
+    accept_hostkey: true
+  sudo: true
+  sudo_user: "{{username}}"

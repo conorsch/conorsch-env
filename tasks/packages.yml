@@ -1,13 +1,17 @@
 ---
-- name: Install favorite packages.
-  apt: >
-    pkg={{item}}
-    state=installed
-    update-cache=yes
+- name: install favorite packages
+  apt:
+    pkg: "{{item}}"
+    state: installed
+    update_cache: yes
   with_items:
     - git
+    - vim
     - tree
     - ipython
+    - python-dev
+    - build-essential
+  sudo: true
   tags:
     - packages
 

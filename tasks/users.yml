@@ -1,0 +1,13 @@
+---
+
+- name: ensure group exists
+  group: name={{username}} state=present
+  sudo: true
+
+- name: ensure user exists
+  user:
+    name: "{{username}}"
+    groups: "{{username}},admin"
+    append: yes
+  sudo: true
+

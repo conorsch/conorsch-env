@@ -1,0 +1,26 @@
+---
+- name: clone homeshick repo
+  git:
+    repo: git://github.com/andsens/homeshick.git
+    dest: "~{{username}}/.homesick/repos/homeshick"
+    accept_hostkey: true
+  sudo: true
+  sudo_user: "{{username}}"
+
+- name: add homeshick initialization to bashrc
+  lineinfile: dest=~{{username}}/.bashrc line="source $HOME/.homesick/repos/homeshick/homeshick.sh" regexp='homeshick'
+  sudo: true
+  sudo_user: "{{username}}"
+
+- name: clone dotfiles repo
+  git:
+    repo: "{{dotfiles_repo}}"
+    dest: "~{{username}}/.homesick/repos/dotfiles"
+    accept_hostkey: true
+  sudo: true
+  sudo_user: "{{username}}"
+
+- name: create symlinks for dotfiles
+  command: ~{{username}}/.homesick/repos/homeshick/bin/homeshick link dotfiles -f -q
+  sudo: true
+  sudo_user: "{{username}}"

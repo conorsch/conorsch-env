@@ -1,4 +1,5 @@
 --- 
-- include: "packages.yml"
-- include: "liquidprompt.yml"
-- include: "homesick.yml"
+- include: users.yml
+- include: packages.yml
+- include: homeshick.yml
+- include: liquidprompt.yml
