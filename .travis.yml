@@ -4,6 +4,7 @@ python: "2.7"
 
 env:
   - SITE=test.yml
+  - ANSIBLE_BASE_CMD="ansible-playbook -l localhost -i tests/hosts tests/$SITE"
 
 before_install:
   # update packages
@@ -18,14 +19,14 @@ install:
 
 script:
   # Check the role/playbook's syntax.
-  - "ansible-playbook -l localhost -i tests/hosts tests/$SITE --syntax-check"
+  - "$ANSIBLE_BASE_CMD --syntax-check"
 
   # Run the role/playbook with ansible-playbook.
-  - "ansible-playbook -l localhost -i tests/hosts tests/$SITE --connection=local --sudo"
+  - "$ANSIBLE_BASE_CMD --connection=local"
 
   # Run the role/playbook again, checking to make sure it's idempotent.
   - >
-    ansible-playbook -i tests/inventory tests/$SITE --connection=local --sudo
+    $ANSIBLE_BASE_CMD --connection=local --sudo
     | grep -q 'changed=0.*failed=0'
     && (echo 'Idempotence test: pass' && exit 0)
     || (echo 'Idempotence test: fail' && exit 1)
