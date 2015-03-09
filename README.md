@@ -1,5 +1,6 @@
 conorsch-env ansible role
 =========
+[![Build Status](https://travis-ci.org/conorsch/conorsch-env.svg?branch=tests)](https://travis-ci.org/conorsch/conorsch-env)
 
 Ansible role for configuring user environment for Conor. 
 Installs packages, adds dotfiles, that kind of thing
