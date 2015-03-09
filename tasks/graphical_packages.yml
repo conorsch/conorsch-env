@@ -3,20 +3,25 @@
 # for headless server environments. See defaults/main.yml
 # to override these settings.
 
+- name: add PPA for firefox developer edition
+  apt_repository:
+    repo: 'ppa:ubuntu-mozilla-daily/firefox-aurora'
+    state: present
+
 - name: install graphical packages
   apt:
     pkg: "{{item}}"
     state: installed
     update_cache: yes
   with_items:
+    - firefox
     - i3
     - i3lock
     - i3status
   sudo: true
   tags:
-    - packages
     - graphical
     - gui
-
+    - packages
 
 # TODO firefox developer edition, tor-browser-en
