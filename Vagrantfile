@@ -4,6 +4,8 @@
 Vagrant.configure(2) do |config|
   config.vm.box = "trusty64"
   config.ssh.port = 2222
+  config.vm.define :testbox do |t|
+  end
   #
   # config.vm.provider "virtualbox" do |vb|
   #   # Display the VirtualBox GUI when booting the machine
@@ -25,7 +27,6 @@ Vagrant.configure(2) do |config|
   #
   config.vm.provision :ansible do |ansible|
     ansible.playbook = "tests/test_vagrant.yml"
-    ansible.inventory_path = ".vagrant/provisioners/ansible/inventory/vagrant_ansible_inventory"
     ansible.groups = {
       "vagrant" => ["testbox"],
     }
