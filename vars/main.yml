@@ -1,6 +1,3 @@
 ---
 # vars file for ronocdh-env
-username: conor
-git_directory: "~{{username}}/gits"
-dotfiles_repo: git://github.com/ronocdh/dotfiles.git
-
+# see "defaults/main.yml"
