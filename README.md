@@ -2,8 +2,9 @@ conorsch-env ansible role
 =========
 [![Build Status](https://travis-ci.org/conorsch/conorsch-env.svg?branch=master)](https://travis-ci.org/conorsch/conorsch-env)
 
-Ansible role for configuring user environment for Conor. 
-Installs packages, adds dotfiles, that kind of thing
+Ansible role for configuring user environment how I like it. Useful 
+for bootstrapping new machines. Installs common base packages
+and configures dotfiles via [[homeshick]].
 
 Requirements
 ------------
@@ -13,28 +14,42 @@ Assumes Ubuntu as OS.
 Role Variables
 --------------
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+Available variables are listed below, along with default values (see `defaults/main.yml`):
+
+    username: conor
+The username for environment configuration. User-level calls will be sudoized to this username.
+
+    git_directory: "~{{username}}/gits"
+
+Default directory for storing git projects. Does not include homeshick projects.
+
+    dotfiles_repo: git://github.com/ronocdh/dotfiles.git
+
+Git repo URL for cloning homeshick dotfiles.
 
 Dependencies
 ------------
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+None.
 
 Example Playbook
 ----------------
 
 Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
 
-    - hosts: servers
+    - hosts: my-machines
+      include_vars: vars/main.yml
       roles:
-         - { role: username.rolename, x: 42 }
+        - { role: conorsch.conorsch-env }
+
+*Inside `vars/main.yml`*:
+
+    username: yourusername
+    dotfiles_repo: git://github.com/yourusername/dotfiles.git
 
 License
 -------
 
 MIT
 
-Author Information
-------------------
-
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+[homeshick]:https://github.com/andsens/homeshick
