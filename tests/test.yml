@@ -7,8 +7,7 @@
     - include_vars: ../vars/main.yml
     - include: ../tasks/main.yml
 
-#- hosts: localhost
-#  remote_user: root
-#  roles:
-#    - conorsch-env
-
+- hosts: localhost
+  remote_user: root
+  roles:
+    - conorsch-env
