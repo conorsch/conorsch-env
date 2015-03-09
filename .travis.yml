@@ -3,7 +3,7 @@ language: python
 python: "2.7"
 
 env:
-  - SITE=tests/test.yml
+  - SITE=test.yml
 
 before_install:
   # update packages
@@ -18,10 +18,10 @@ install:
 
 script:
   # Check the role/playbook's syntax.
-  - "ansible-playbook -i tests/inventory tests/$SITE --syntax-check"
+  - "ansible-playbook -i tests/hosts tests/$SITE --syntax-check"
 
   # Run the role/playbook with ansible-playbook.
-  - "ansible-playbook -i tests/inventory tests/$SITE --connection=local --sudo"
+  - "ansible-playbook -i tests/hosts tests/$SITE --connection=local --sudo"
 
   # Run the role/playbook again, checking to make sure it's idempotent.
   - >
