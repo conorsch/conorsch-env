@@ -1,13 +1,12 @@
 ---
 # include task for testing
-- hosts: testbox
+- hosts: vagrant
   tasks:
-    - name: whats up mang
-      shell: echo "DAWG"
     - include_vars: ../vars/main.yml
     - include: ../tasks/main.yml
 
 - hosts: localhost
   remote_user: root
-  roles:
-    - conorsch-env
+  tasks:
+    - include_vars: ../vars/main.yml
+    - include: ../tasks/main.yml

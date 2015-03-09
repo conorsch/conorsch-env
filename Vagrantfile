@@ -26,7 +26,7 @@ Vagrant.configure(2) do |config|
   config.vm.provision :ansible do |ansible|
     ansible.playbook = "tests/test.yml"
     ansible.inventory_path = "tests/hosts"
-    ansible.limit = "testbox"
+    ansible.limit = "vagrant"
     ansible.extra_vars = { ansible_ssh_port: config.ssh.port }
     ansible.verbose = "vvvv"
   end
