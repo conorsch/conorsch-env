@@ -3,3 +3,6 @@
 - include: packages.yml
 - include: homeshick.yml
 - include: liquidprompt.yml
+- include: graphical_packages.yml
+  when: include_graphical_packages
+

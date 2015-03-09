@@ -1,0 +1,22 @@
+---
+# Installs packages that require X, so inapproriate
+# for headless server environments. See defaults/main.yml
+# to override these settings.
+
+- name: install graphical packages
+  apt:
+    pkg: "{{item}}"
+    state: installed
+    update_cache: yes
+  with_items:
+    - i3
+    - i3lock
+    - i3status
+  sudo: true
+  tags:
+    - packages
+    - graphical
+    - gui
+
+
+# TODO firefox developer edition, tor-browser-en
