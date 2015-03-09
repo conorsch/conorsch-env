@@ -4,7 +4,11 @@
   tasks:
     - name: whats up mang
       shell: echo "DAWG"
-    - include_vars: vars/main.yml
-    - include: tasks/main.yml
+    - include_vars: ../vars/main.yml
+    - include: ../tasks/main.yml
 
+#- hosts: localhost
+#  remote_user: root
+#  roles:
+#    - conorsch-env
 
