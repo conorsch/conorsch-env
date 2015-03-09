@@ -1,6 +1,5 @@
 ---
 # include task for testing vagrant machine
 - hosts: vagrant
-  tasks:
-    - include_vars: ../vars/main.yml
-    - include: ../tasks/main.yml
+  roles:
+    - conorsch-env
