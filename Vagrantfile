@@ -30,7 +30,10 @@ Vagrant.configure(2) do |config|
     ansible.groups = {
       "vagrant" => ["testbox"],
     }
-    ansible.extra_vars = { ansible_ssh_port: config.ssh.port }
+    ansible.extra_vars = {
+      ansible_ssh_port: config.ssh.port,
+      include_graphical_packages: true,
+    }
     ansible.verbose = "vvvv"
   end
 
