@@ -3,8 +3,7 @@ language: python
 python: "2.7"
 
 env:
-  - SITE=test.yml
-  - ANSIBLE_BASE_CMD="ansible-playbook -l localhost -i tests/hosts tests/$SITE"
+  - ANSIBLE_BASE_CMD="ansible-playbook -l localhost -i tests/hosts tests/site.yml"
 
 before_install:
   # update packages
