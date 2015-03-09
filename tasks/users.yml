@@ -7,7 +7,7 @@
 - name: ensure user exists
   user:
     name: "{{username}}"
-    groups: "{{username}},admin"
+    groups: "{{username}}"
     append: yes
   sudo: true
 
