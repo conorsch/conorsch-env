@@ -15,14 +15,19 @@
     state: installed
     update_cache: yes
   with_items:
+    - dunst
     - firefox
     - i3
     - i3lock
     - i3status
+    - konsole
+    - nitrogen
+    - xcompmgr
+
   sudo: true
   tags:
     - graphical
     - gui
     - packages
 
-# TODO firefox developer edition, tor-browser-en
+# TODO tor-browser-en
