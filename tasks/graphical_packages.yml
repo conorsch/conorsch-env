@@ -30,4 +30,15 @@
     - gui
     - packages
 
+# Configures Konsole dotfiles
+- name: copy konsolerc
+  copy: src=konsolerc dest="~{{username}}/.kde/share/config/konsolerc"
+  tags:
+    - konsole
+
+- name: copy default profile
+  copy: src=Shell.profile dest="~{{username}}/.kde/share/apps/konsole/Shell.profile"
+  tags:
+    - konsole
+
 # TODO tor-browser-en
