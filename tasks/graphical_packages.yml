@@ -8,6 +8,16 @@
     repo: 'ppa:ubuntu-mozilla-daily/firefox-aurora'
     state: present
   sudo: true
+  tags:
+    - ppa
+
+- name: add PPA for tor browser launcher
+  apt_repository:
+    repo: 'ppa:micahflee/ppa'
+    state: present
+  sudo: true
+  tags:
+    - ppa
 
 - name: install graphical packages
   apt:
@@ -22,8 +32,8 @@
     - i3status
     - konsole
     - nitrogen
+    - torbrowser-launcher
     - xcompmgr
-
   sudo: true
   tags:
     - graphical
@@ -41,4 +51,3 @@
   tags:
     - konsole
 
-# TODO tor-browser-en
