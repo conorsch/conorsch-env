@@ -5,8 +5,9 @@
     dest: "~{{username}}/.homesick/repos/homeshick"
     accept_hostkey: true
 
-- name: add homeshick initialization to bashrc
-  lineinfile: dest=~{{username}}/.bashrc line="source $HOME/.homesick/repos/homeshick/homeshick.sh" regexp='homeshick'
+# bashrc is version-controlled already, so don't force this
+#- name: add homeshick initialization to bashrc
+#  lineinfile: dest=~{{username}}/.bashrc line="source $HOME/.homesick/repos/homeshick/homeshick.sh" regexp='homeshick'
 
 - name: clone dotfiles repo
   git:

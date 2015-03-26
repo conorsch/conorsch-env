@@ -1,8 +1,11 @@
 ---
-# defaults file for ronocdh-env
+# defaults file for conorsch-env
 username: conor
 git_directory: "~{{username}}/gits"
-dotfiles_repo: git://github.com/ronocdh/dotfiles.git
+github_username: conorsch
+github_key_url: https://github.com/{{github_username}}.keys
+dotfiles_repo: git://github.com/{{github_username}}/dotfiles.git
+default_shell: /bin/bash
 include_graphical_packages: false
 DEBUG: false
 

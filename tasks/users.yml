@@ -1,5 +1,5 @@
 ---
-
+# create user account and add ssh keys via github
 - name: ensure group exists
   group: name={{username}} state=present
   sudo: true
@@ -9,5 +9,12 @@
     name: "{{username}}"
     groups: "{{username}}"
     append: yes
+    shell: "{{default_shell}}"
   sudo: true
 
+- name: add ssh key for user
+  authorized_key:
+    user: "{{username}}"
+    key: "{{github_key_url}}"
+  tags:
+    - ssh
