@@ -16,5 +16,6 @@
   authorized_key:
     user: "{{username}}"
     key: "{{github_key_url}}"
+  sudo: true
   tags:
     - ssh
