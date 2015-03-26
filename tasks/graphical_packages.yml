@@ -33,6 +33,7 @@
     - konsole
     - nitrogen
     - torbrowser-launcher
+    - xautolock
     - xcompmgr
   sudo: true
   tags:
@@ -48,6 +49,11 @@
 
 - name: copy default profile
   copy: src=Shell.profile dest="~{{username}}/.kde/share/apps/konsole/Shell.profile"
+  tags:
+    - konsole
+
+- name: copy custom color scheme
+  copy: src=Linux.colorscheme dest="~{{username}}/.kde/share/apps/konsole/Linux.colorscheme"
   tags:
     - konsole
 

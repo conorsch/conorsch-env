@@ -4,4 +4,5 @@ username: conor
 git_directory: "~{{username}}/gits"
 dotfiles_repo: git://github.com/ronocdh/dotfiles.git
 include_graphical_packages: false
+DEBUG: false
 

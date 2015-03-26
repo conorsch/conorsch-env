@@ -1,0 +1,22 @@
+---
+# configures KDE dotfiles
+# use custom 'xrandr' module to get screen resolution vars
+- name: get custom facts
+  action: xrandr
+  tags:
+    - DEBUG
+    - xrandr
+
+- name: copy share/config/kcmfonts file to local settings
+  template: src=kcmfonts.j2 dest="~{{ username }}/.kde/share/config/kcmfonts"
+  tags:
+    - DEBUG
+    - xrandr
+
+- name: get custom facts
+  action: xrandr
+  tags:
+    - DEBUG
+    - xrandr
+
+- debug: var=resolution_as_string

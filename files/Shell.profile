@@ -1,6 +1,6 @@
 [Appearance]
 ColorScheme=Linux
-Font=Monospace,16,-1,2,50,0,0,0,0,0
+Font=Monospace,18,-1,2,50,0,0,0,0,0
 
 [General]
 Command=/bin/bash -l
