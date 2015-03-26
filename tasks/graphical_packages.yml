@@ -1,0 +1,59 @@
+---
+# Installs packages that require X, so inapproriate
+# for headless server environments. See defaults/main.yml
+# to override these settings.
+
+- name: add PPA for firefox developer edition
+  apt_repository:
+    repo: 'ppa:ubuntu-mozilla-daily/firefox-aurora'
+    state: present
+  sudo: true
+  tags:
+    - ppa
+
+- name: add PPA for tor browser launcher
+  apt_repository:
+    repo: 'ppa:micahflee/ppa'
+    state: present
+  sudo: true
+  tags:
+    - ppa
+
+- name: install graphical packages
+  apt:
+    pkg: "{{item}}"
+    state: installed
+    update_cache: yes
+  with_items:
+    - dunst
+    - firefox
+    - i3
+    - i3lock
+    - i3status
+    - konsole
+    - nitrogen
+    - torbrowser-launcher
+    - xautolock
+    - xcompmgr
+  sudo: true
+  tags:
+    - graphical
+    - gui
+    - packages
+
+# Configures Konsole dotfiles
+- name: copy konsolerc
+  copy: src=konsolerc dest="~{{username}}/.kde/share/config/konsolerc"
+  tags:
+    - konsole
+
+- name: copy default profile
+  copy: src=Shell.profile dest="~{{username}}/.kde/share/apps/konsole/Shell.profile"
+  tags:
+    - konsole
+
+- name: copy custom color scheme
+  copy: src=Linux.colorscheme dest="~{{username}}/.kde/share/apps/konsole/Linux.colorscheme"
+  tags:
+    - konsole
+
