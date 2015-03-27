@@ -3,7 +3,7 @@
 # This folder isn't automatically created after 
 # installing `kubuntu-desktop`; perhaps a GUI login is required.
 - name: ensure kde config dir exists
-  file: dest="~{{ username }}/.kde/share/config/" state=dir
+  file: dest="~{{ username }}/.kde/share/config/" state=directory
 
 # use custom 'xrandr' module to get screen resolution vars
 - name: get custom facts
