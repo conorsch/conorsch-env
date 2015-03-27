@@ -4,7 +4,7 @@ conorsch-env ansible role
 
 Ansible role for configuring user environment how I like it. Useful 
 for bootstrapping new machines. Installs common base packages
-and configures dotfiles via [[homeshick]].
+and configures dotfiles via [homeshick].
 
 Requirements
 ------------
@@ -23,14 +23,31 @@ The username for environment configuration. User-level calls will be sudoized to
 
 Default directory for storing git projects. Does not include homeshick projects.
 
-    dotfiles_repo: git://github.com/ronocdh/dotfiles.git
+    github_username: conorsch
 
-Git repo URL for cloning homeshick dotfiles.
+Username on github.com. Used for pulling SSH keys (see below) and dotfiles URL.
+
+    github_key_url: https://github.com/{{github_username}}.keys
+    dotfiles_repo: git://github.com/{{github_username}}/dotfiles.git
+
+Default GitHub URLs. 
+
+    default_shell: /bin/bash
+
+Default shell. 
+
+    include_graphical_packages: false
+
+Includes GUI applications such as firefox. 
+
+    DEBUG: false
+
+Makes some Ansible tasks noisier, for debugging.
 
 Dependencies
 ------------
 
-None.
+* [gcporras.virtualenvwrapper]
 
 Example Playbook
 ----------------
@@ -45,7 +62,7 @@ Including an example of how to use your role (for instance, with variables passe
 *Inside `vars/main.yml`*:
 
     username: yourusername
-    dotfiles_repo: git://github.com/yourusername/dotfiles.git
+    github_username: yourgithubusername
 
 License
 -------
@@ -53,3 +70,4 @@ License
 MIT
 
 [homeshick]:https://github.com/andsens/homeshick
+[gcporras.virtualenvwrapper]:https://galaxy.ansible.com/list#/roles/1187
