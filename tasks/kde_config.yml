@@ -1,22 +1,14 @@
 ---
 # configures KDE dotfiles
+# This folder isn't automatically created after 
+# installing `kubuntu-desktop`; perhaps a GUI login is required.
+- name: ensure kde config dir exists
+  file: dest="~{{ username }}/.kde/share/config/" state=dir
+
 # use custom 'xrandr' module to get screen resolution vars
 - name: get custom facts
   action: xrandr
-  tags:
-    - DEBUG
-    - xrandr
 
 - name: copy share/config/kcmfonts file to local settings
   template: src=kcmfonts.j2 dest="~{{ username }}/.kde/share/config/kcmfonts"
-  tags:
-    - DEBUG
-    - xrandr
 
-- name: get custom facts
-  action: xrandr
-  tags:
-    - DEBUG
-    - xrandr
-
-- debug: var=resolution_as_string
