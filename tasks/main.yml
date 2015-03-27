@@ -4,13 +4,18 @@
 - include: homeshick.yml
   tags:
     - dotfiles
+
 - include: liquidprompt.yml
   tags:
     - dotfiles
+
 - include: graphical_packages.yml
   when: include_graphical_packages
+  tags:
+    - gui
 
 - include: kde_config.yml
-  when: DEBUG
   tags:
-    - DEBUG
+    - kde
+    - gui
+
