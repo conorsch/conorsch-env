@@ -42,19 +42,3 @@
     - gui
     - packages
 
-# Configures Konsole dotfiles
-- name: copy konsolerc
-  copy: src=konsolerc dest="~{{username}}/.kde/share/config/konsolerc"
-  tags:
-    - konsole
-
-- name: copy default profile
-  copy: src=Shell.profile dest="~{{username}}/.kde/share/apps/konsole/Shell.profile"
-  tags:
-    - konsole
-
-- name: copy custom color scheme
-  copy: src=Linux.colorscheme dest="~{{username}}/.kde/share/apps/konsole/Linux.colorscheme"
-  tags:
-    - konsole
-

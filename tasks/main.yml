@@ -15,6 +15,7 @@
     - gui
 
 - include: kde_config.yml
+  when: include_graphical_packages
   tags:
     - kde
     - gui
