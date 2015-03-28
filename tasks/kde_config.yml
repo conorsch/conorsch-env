@@ -14,6 +14,8 @@
 # use custom 'xrandr' module to get screen resolution vars
 - name: get custom facts
   action: xrandr
+  tags:
+    - xrandr
 
 - name: copy share/config/kcmfonts file to local settings
   template:
