@@ -3,12 +3,23 @@
 # This folder isn't automatically created after 
 # installing `kubuntu-desktop`; perhaps a GUI login is required.
 - name: ensure kde config dir exists
-  file: dest="~{{ username }}/.kde/share/config/" state=directory
+  file:
+    dest: "~{{ username }}/.kde/share/config/"
+    state: directory
+    owner: "{{username}}"
+    mode: 0700
+  sudo: true
+  sudo_user: "{{username}}"
 
 # use custom 'xrandr' module to get screen resolution vars
 - name: get custom facts
   action: xrandr
 
 - name: copy share/config/kcmfonts file to local settings
-  template: src=kcmfonts.j2 dest="~{{ username }}/.kde/share/config/kcmfonts"
-
+  template:
+    src: kcmfonts.j2
+    dest: "~{{ username }}/.kde/share/config/kcmfonts"
+    owner: "{{username}}"
+    mode: 0600
+  sudo: true
+  sudo_user: "{{username}}"
