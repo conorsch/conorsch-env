@@ -16,7 +16,7 @@ Vagrant.configure(2) do |config|
     }
     ansible.extra_vars = {
       ansible_ssh_port: config.ssh.port,
-      include_graphical_packages: true,
+      include_graphical_packages: false,
     }
     ansible.verbose = "vvvv"
   end
