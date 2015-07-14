@@ -13,6 +13,7 @@
   git:
     repo: "{{dotfiles_repo}}"
     dest: "~{{username}}/.homesick/repos/dotfiles"
+    version: master
     accept_hostkey: true
 
 - name: create symlinks for dotfiles
