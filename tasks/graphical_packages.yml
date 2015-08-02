@@ -5,7 +5,15 @@
 
 - name: add PPA for firefox developer edition
   apt_repository:
-    repo: 'ppa:ubuntu-mozilla-daily/firefox-aurora'
+    repo: ppa:ubuntu-mozilla-daily/firefox-aurora
+    state: present
+  sudo: true
+  tags:
+    - ppa
+
+- name: add PPA for thunderbird beta channel
+  apt_repository:
+    repo: ppa:mozillateam/thunderbird-next
     state: present
   sudo: true
   tags:
@@ -13,7 +21,7 @@
 
 - name: add PPA for tor browser launcher
   apt_repository:
-    repo: 'ppa:micahflee/ppa'
+    repo: ppa:micahflee/ppa
     state: present
   sudo: true
   tags:
@@ -32,6 +40,7 @@
     - i3status
     - konsole
     - nitrogen
+    - thunderbird
     - torbrowser-launcher
     - xautolock
     - xcompmgr
