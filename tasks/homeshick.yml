@@ -15,6 +15,9 @@
     dest: "~{{username}}/.homesick/repos/dotfiles"
     version: master
     accept_hostkey: true
+  # Without force: true, clone may fail if local changes.
+  # If that happens, continue executing the playbook.
+  ignore_errors: true
 
 - name: create symlinks for dotfiles
   command: ~{{username}}/.homesick/repos/homeshick/bin/homeshick link dotfiles -f -q
