@@ -1,16 +1,20 @@
---- 
+---
 - include: users.yml
+
 - include: packages.yml
+
 - include: homeshick.yml
   sudo: true
   sudo_user: "{{username}}"
   tags:
     - dotfiles
+
 - include: liquidprompt.yml
   sudo: true
   sudo_user: "{{username}}"
   tags:
     - dotfiles
+
 - include: graphical_packages.yml
   when: include_graphical_packages
 
