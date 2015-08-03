@@ -16,3 +16,12 @@
   tags:
     - packages
 
+- name: install pip packages via pip
+  pip:
+    state: latest
+    name: "{{item}}"
+    extra_args: "--user"
+  sudo: false
+  with_items: pip_packages
+  tags:
+    - pip
