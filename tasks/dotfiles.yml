@@ -1,0 +1,9 @@
+---
+- name: deploy dotfiles
+  synchronize:
+    mode: push
+    src: home/
+    dest: "/home/{{ username }}/"
+  tags:
+    - dotfiles
+

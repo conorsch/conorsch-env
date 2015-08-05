@@ -3,7 +3,7 @@
 
 - include: packages.yml
 
-- include: homeshick.yml
+- include: dotfiles.yml
   sudo: true
   sudo_user: "{{username}}"
   tags:
