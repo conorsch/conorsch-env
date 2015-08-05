@@ -19,13 +19,15 @@
   tags:
     - ssh
 
-- name: grant passwordless sudo
+- name: remove passwordless sudo
   template:
     src: sudoers
     dest: /etc/sudoers.d/{{username}}
     owner: root
     group: root
     mode: "0644"
+    state: absent
+  sudo: true
 
 - name: tighten up permissions on home directory
   file:
