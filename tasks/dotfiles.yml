@@ -18,3 +18,8 @@
   command: vim +PluginInstall +qall
   tags:
     - dotfiles
+
+  # Haven't found a way to clean unwanted plugins
+  # noninteractively.
+#- name: clean vim plugins
+#  command: vim +PluginClean
