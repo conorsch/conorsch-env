@@ -19,15 +19,26 @@
   tags:
     - ssh
 
-- name: remove passwordless sudo
+- name: add passwordless sudo to droplets
   template:
     src: sudoers
     dest: /etc/sudoers.d/{{username}}
     owner: root
     group: root
     mode: "0644"
+  sudo: true
+  when: "'droplets' in group_names"
+  tags:
+    - sudo
+
+- name: remove passwordless sudo from personal machines
+  file:
+    path: /etc/sudoers.d/{{username}}
     state: absent
   sudo: true
+  when: "'personal' in group_names"
+  tags:
+    - sudo
 
 - name: tighten up permissions on home directory
   file:
