@@ -26,3 +26,11 @@
     owner: root
     group: root
     mode: "0644"
+
+- name: tighten up permissions on home directory
+  file:
+    state: directory
+    path: /home/{{ username }}
+    mode: "0750"
+    owner: "{{ username }}"
+    group: "{{ username }}"
