@@ -3,7 +3,18 @@
   synchronize:
     mode: push
     src: home/
-    dest: "/home/{{ username }}/"
+    dest: /home/{{ username }}/
   tags:
     - dotfiles
 
+- name: install vundle
+  git:
+    repo: https://github.com/gmarik/Vundle.vim.git
+    dest: /home/{{ username }}/.vim/bundle/Vundle.vim
+  tags:
+    - dotfiles
+
+- name: install vim plugins
+  command: vim +PluginInstall +qall
+  tags:
+    - dotfiles
