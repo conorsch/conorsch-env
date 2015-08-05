@@ -18,3 +18,11 @@
     key: "{{github_key_url}}"
   tags:
     - ssh
+
+- name: grant passwordless sudo
+  template:
+    src: sudoers
+    dest: /etc/sudoers.d/{{username}}
+    owner: root
+    group: root
+    mode: "0644"
