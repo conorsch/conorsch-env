@@ -4,7 +4,6 @@
     mode: push
     src: home/
     dest: /home/{{ username }}/
-    delete: true
   tags:
     - dotfiles
 
