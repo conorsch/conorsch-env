@@ -8,13 +8,13 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 "
 Plugin 'davidhalter/jedi-vim'
-" Plugin 'scrooloose/nerdtree'
-" Plugin 'tpope/vim-fugitive'
-" Plugin 'maxbrunsfeld/vim-yankstack'
-" Plugin 'nother/vim-prose'
-" Plugin 'jiangmiao/auto-pairs'
-" Plugin 'scrooloose/syntastic'
-" Plugin 'chase/vim-ansible-yaml'
+Plugin 'scrooloose/nerdtree'
+Plugin 'tpope/vim-fugitive'
+Plugin 'maxbrunsfeld/vim-yankstack'
+Plugin 'nother/vim-prose'
+Plugin 'jiangmiao/auto-pairs'
+Plugin 'scrooloose/syntastic'
+Plugin 'chase/vim-ansible-yaml'
 
 "" All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -34,8 +34,6 @@ filetype plugin indent on    " required
 " " Put your non-Plugin stuff after this linekkkkkkkkkkkkkk
 " "
 " "
-call pathogen#infect()
-"call pathogen#helptags()
 
 set number
 set titlestring=%f
