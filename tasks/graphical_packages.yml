@@ -51,6 +51,17 @@
     - gui
     - packages
 
+- name: ensure konsole config dirs exist
+  file:
+    state: directory
+    owner: "{{ username }}"
+    group: "{{ username }}"
+    mode: "0700"
+    path: "~{{ username }}/.kde/share/{{ item }}"
+  with_items:
+    - config
+    - apps/konsole
+
 # Configures Konsole dotfiles
 - name: copy konsolerc
   copy: src=konsolerc dest="~{{username}}/.kde/share/config/konsolerc"
