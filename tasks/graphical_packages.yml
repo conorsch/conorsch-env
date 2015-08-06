@@ -78,3 +78,26 @@
   tags:
     - konsole
 
+- name: ensure nitrogen config dir exists
+  file:
+    state: directory
+    owner: "{{ username }}"
+    group: "{{ username }}"
+    mode: "0700"
+    path: "~{{ username }}/.config/nitrogen"
+  tags:
+    - nitrogen
+
+- name: copy nitrogen config
+  copy:
+    dest: ~{{ username }}/.config/nitrogen/{{ item }}
+    src: nitrogen/{{ item }}
+    owner: "{{ username }}"
+    group: "{{ username }}"
+    mode: "0600"
+  with_items:
+    - nitrogen.cfg
+    - bg-saved.cfg
+  tags:
+    - nitrogen
+
