@@ -5,13 +5,14 @@
     state: installed
     update_cache: yes
   with_items:
+    - build-essential
     - git
-    - vim
-    - tree
+    - htop
     - ipython
     - python-dev
     - python-pip
-    - build-essential
+    - tree
+    - vim
   sudo: true
   tags:
     - packages
