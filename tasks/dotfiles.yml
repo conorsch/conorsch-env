@@ -4,6 +4,8 @@
     mode: push
     src: home/
     dest: /home/{{ username }}/
+    # Override Ansible's choice of "sudo rsync" below:
+    rsync_path: rsync
   tags:
     - dotfiles
 
