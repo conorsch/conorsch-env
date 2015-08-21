@@ -9,6 +9,13 @@
   tags:
     - dotfiles
 
+- include: rubygems.yml
+  sudo: true
+  sudo_user: "{{username}}"
+  tags:
+    - rubygems
+    - gems
+
 - include: liquidprompt.yml
   sudo: true
   sudo_user: "{{username}}"
