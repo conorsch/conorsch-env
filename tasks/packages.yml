@@ -11,6 +11,7 @@
     - ipython
     - python-dev
     - python-pip
+    - rubygems-integration
     - tree
     - vim
   sudo: true
