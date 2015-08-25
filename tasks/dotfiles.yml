@@ -9,7 +9,7 @@
 
 - name: install vundle
   git:
-    repo: https://github.com/gmarik/Vundle.vim.git
+    repo: https://github.com/VundleVim/Vundle.vim
     dest: /home/{{ username }}/.vim/bundle/Vundle.vim
   tags:
     - dotfiles
