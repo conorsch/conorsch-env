@@ -1,11 +1,9 @@
 ---
 - name: deploy dotfiles
-  synchronize:
-    mode: push
+  copy:
+    directory_mode: "0750"
     src: home/
     dest: /home/{{ username }}/
-    # Override Ansible's choice of "sudo rsync" below:
-    rsync_path: rsync
   tags:
     - dotfiles
 
