@@ -10,6 +10,7 @@
     - htop
     - ipython
     - python-dev
+    - rubygems
     - rubygems-integration
     - tree
     - vim
