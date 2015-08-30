@@ -2,6 +2,8 @@
 - include: users.yml
 
 - include: packages.yml
+  tags:
+    - packages
 
 - include: dotfiles.yml
   sudo: true
