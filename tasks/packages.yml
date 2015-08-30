@@ -17,6 +17,15 @@
   tags:
     - packages
 
+- name: remove system python-pip
+  apt:
+    name: python-pip
+    state: absent
+
+- name: easy_install pip
+  easy_install:
+    name: pip
+
   # Without requests[security], under Ubuntu,
   # libcurl3 throws insecure SSL warnings.
   # Under Debian, though, trying to install requests[security]
