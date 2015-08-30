@@ -8,7 +8,6 @@ pip_packages:
   - docopt
   - BeautifulSoup
   - requests
-  - requests[security]
   - python-digitalocean
   - etym
   - grip

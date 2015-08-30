@@ -17,14 +17,17 @@
   tags:
     - packages
 
-- name: remove system package python-pip
-  apt:
-    name: python-pip
-    state: absent
-
-- name: remove system package python-pip
-  easy_install:
-    name: pip
+  # Without requests[security], under Ubuntu,
+  # libcurl3 throws insecure SSL warnings.
+  # Under Debian, though, trying to install requests[security]
+  # with --user via Ansible
+- name: install requests[security] on Ubuntu
+  pip:
+    state: latest
+    name: requests[security]
+  when: 'ansible_distribution == "Ubuntu"'
+  tags:
+    - pip
 
 - name: install pip packages via pip
   pip:
