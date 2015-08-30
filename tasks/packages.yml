@@ -10,7 +10,6 @@
     - htop
     - ipython
     - python-dev
-    - python-pip
     - rubygems-integration
     - tree
     - vim
@@ -18,12 +17,22 @@
   tags:
     - packages
 
+- name: remove system package python-pip
+  apt:
+    name: python-pip
+    state: absent
+
+- name: remove system package python-pip
+  easy_install:
+    name: pip
+
 - name: install pip packages via pip
   pip:
     state: latest
     name: "{{item}}"
     extra_args: "--user"
-  sudo: false
+  sudo: true
+  sudo_user: "{{ username }}"
   with_items: pip_packages
   tags:
     - pip
