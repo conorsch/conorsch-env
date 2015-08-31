@@ -1,19 +1,13 @@
 ---
+- name: include OS-specific vars
+  include_vars: "{{ ansible_distribution }}.yml"
+
 - name: install favorite packages
   apt:
     pkg: "{{item}}"
     state: installed
     update_cache: yes
-  with_items:
-    - build-essential
-    - git
-    - htop
-    - ipython
-    - python-dev
-    - rubygems
-    - rubygems-integration
-    - tree
-    - vim
+  with_items: favorite_packages
   sudo: true
   tags:
     - packages
@@ -22,10 +16,14 @@
   apt:
     name: python-pip
     state: absent
+  sudo: true
+  when: 'ansible_distribution == "Debian"'
 
 - name: easy_install pip
   easy_install:
     name: pip
+  sudo: true
+  when: 'ansible_distribution == "Debian"'
 
   # Without requests[security], under Ubuntu,
   # libcurl3 throws insecure SSL warnings.

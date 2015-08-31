@@ -1,0 +1,12 @@
+---
+favorite_packages:
+    - build-essential
+    - git
+    - htop
+    - ipython
+    - python-dev
+    - python-pip
+    - rubygems-integration
+    - tree
+    - vim
+
