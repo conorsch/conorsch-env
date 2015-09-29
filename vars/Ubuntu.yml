@@ -1,12 +1,14 @@
 ---
 favorite_packages:
     - build-essential
+    - byobu
     - git
     - htop
     - ipython
     - python-dev
     - python-pip
     - rubygems-integration
+    - tmux
     - tree
     - vim
 
