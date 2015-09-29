@@ -3,7 +3,7 @@
 # for headless server environments. See defaults/main.yml
 # to override these settings.
 
-- name: add PPA for firefox developer edition
+- name: Add PPA for Firefox Developer Edition.
   apt_repository:
     repo: ppa:ubuntu-mozilla-daily/firefox-aurora
     state: present
@@ -11,7 +11,7 @@
   tags:
     - ppa
 
-- name: add PPA for thunderbird beta channel
+- name: Add PPA for Thunderbird Beta Channel.
   apt_repository:
     repo: ppa:mozillateam/thunderbird-next
     state: present
@@ -19,7 +19,7 @@
   tags:
     - ppa
 
-- name: add PPA for tor browser launcher
+- name: Add PPA for Tor Browser Launcher.
   apt_repository:
     repo: ppa:micahflee/ppa
     state: present
@@ -27,7 +27,7 @@
   tags:
     - ppa
 
-- name: install graphical packages
+- name: Install graphical packages.
   apt:
     pkg: "{{item}}"
     state: installed
@@ -51,7 +51,7 @@
     - gui
     - packages
 
-- name: ensure konsole config dirs exist
+- name: Create Konsole config directories.
   file:
     state: directory
     owner: "{{ username }}"
@@ -63,22 +63,22 @@
     - apps/konsole
 
 # Configures Konsole dotfiles
-- name: copy konsolerc
+- name: Copy konsolerc.
   copy: src=konsolerc dest="~{{username}}/.kde/share/config/konsolerc"
   tags:
     - konsole
 
-- name: copy default profile
+- name: Copy default Konsole profile.
   copy: src=Shell.profile dest="~{{username}}/.kde/share/apps/konsole/Shell.profile"
   tags:
     - konsole
 
-- name: copy custom color scheme
+- name: Copy custom Konsole color scheme.
   copy: src=Linux.colorscheme dest="~{{username}}/.kde/share/apps/konsole/Linux.colorscheme"
   tags:
     - konsole
 
-- name: ensure nitrogen config dir exists
+- name: Create Nitrogen config directory.
   file:
     state: directory
     owner: "{{ username }}"
@@ -88,7 +88,7 @@
   tags:
     - nitrogen
 
-- name: copy nitrogen config
+- name: Copy Nitrogen config.
   copy:
     dest: ~{{ username }}/.config/nitrogen/{{ item }}
     src: nitrogen/{{ item }}

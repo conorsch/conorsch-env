@@ -1,5 +1,5 @@
 ---
-- name: deploy dotfiles
+- name: Deploy dotfiles.
   copy:
     directory_mode: "0750"
     src: home/
@@ -7,14 +7,14 @@
   tags:
     - dotfiles
 
-- name: install vundle
+- name: Install Vundle.
   git:
     repo: https://github.com/VundleVim/Vundle.vim
     dest: /home/{{ username }}/.vim/bundle/Vundle.vim
   tags:
     - dotfiles
 
-- name: install vim plugins
+- name: Install vim plugins.
   command: vim +PluginInstall +qall
   tags:
     - dotfiles

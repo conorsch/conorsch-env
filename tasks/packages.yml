@@ -1,8 +1,8 @@
 ---
-- name: include OS-specific vars
+- name: Include OS-specific vars.
   include_vars: "{{ ansible_distribution }}.yml"
 
-- name: install favorite packages
+- name: Install favorite packages.
   apt:
     pkg: "{{item}}"
     state: installed
@@ -12,14 +12,14 @@
   tags:
     - packages
 
-- name: remove system python-pip
+- name: Remove system python-pip on Debian.
   apt:
     name: python-pip
     state: absent
   sudo: true
   when: 'ansible_distribution == "Debian"'
 
-- name: easy_install pip
+- name: easy_install pip on Debian
   easy_install:
     name: pip
   sudo: true
@@ -29,18 +29,18 @@
   # libcurl3 throws insecure SSL warnings.
   # Under Debian, though, trying to install requests[security]
   # with --user via Ansible
-- name: install requests[security] on Ubuntu
+- name: Install requests[security] on Ubuntu.
   pip:
     state: latest
     name: requests[security]
-  when: 'ansible_distribution == "Ubuntu"'
+  when: ansible_distribution == "Ubuntu"
   tags:
     - pip
 
-- name: install pip packages via pip
+- name: Install pip packages.
   pip:
     state: latest
-    name: "{{item}}"
+    name: "{{ item }}"
     extra_args: "--user"
   sudo: true
   sudo_user: "{{ username }}"

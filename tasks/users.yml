@@ -1,10 +1,10 @@
 ---
 # create user account and add ssh keys via github
-- name: ensure group exists
+- name: Create group for user.
   group: name={{username}} state=present
   sudo: true
 
-- name: ensure user exists
+- name: Create user.
   user:
     name: "{{username}}"
     groups: "{{username}}"
@@ -12,17 +12,17 @@
     shell: "{{default_shell}}"
   sudo: true
 
-- name: add ssh key for user
+- name: Add authorized SSH keys for user.
   authorized_key:
-    user: "{{username}}"
-    key: "{{github_key_url}}"
+    user: "{{ username }}"
+    key: "{{ github_key_url }}"
   tags:
     - ssh
 
-- name: add passwordless sudo to droplets
+- name: Add passwordless sudo to cloud hosts.
   template:
     src: sudoers
-    dest: /etc/sudoers.d/{{username}}
+    dest: /etc/sudoers.d/{{ username }}
     owner: root
     group: root
     mode: "0644"
@@ -31,7 +31,7 @@
   tags:
     - sudo
 
-- name: remove passwordless sudo from personal machines
+- name: Remove passwordless sudo from personal machines.
   file:
     path: /etc/sudoers.d/{{username}}
     state: absent
@@ -40,7 +40,7 @@
   tags:
     - sudo
 
-- name: tighten up permissions on home directory
+- name: Tighten up permissions on home directory.
   file:
     state: directory
     path: /home/{{ username }}
