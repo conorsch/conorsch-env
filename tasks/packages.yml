@@ -41,6 +41,7 @@
   pip:
     state: latest
     name: "{{ item }}"
+    extra_args: "--user"
   with_items: pip_packages
   tags:
     - pip
