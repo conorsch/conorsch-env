@@ -6,6 +6,8 @@
     state: present
     line: "{{ lookup('pipe', 'ssh-keyscan -t rsa github.com') }}"
     regexp: "^github\\.com"
+  sudo: yes
+  sudo_user: "{{ username }}"
 
 - name: Install homeshick
   git:
