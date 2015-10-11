@@ -23,9 +23,13 @@
 
 - name: Clone dotfiles repo.
   git:
-    repo: "{{ dotfiles_repo }}"
+    repo: "{{ dotfiles_repo_url_https }}"
     dest: "{{ ansible_env.HOME }}/.homesick/repos/dotfiles"
   register: clone_dotfiles_result
+
+- name: Convert dotfiles repo origin format from HTTPS to SSH.
+  command: git remote set-url origin {{ dotfiles_repo_url_ssh }}
+  when: clone_dotfiles_result.changed
 
 - name: Create symlinks for dotfiles.
   command: "{{ ansible_env.HOME}}/.homesick/repos/homeshick/bin/homeshick link dotfiles -f -q"
