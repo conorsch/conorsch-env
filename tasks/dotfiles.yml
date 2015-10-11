@@ -1,23 +1,42 @@
 ---
-- name: Deploy dotfiles.
-  copy:
-    directory_mode: "0750"
-    src: home/
-    dest: /home/{{ username }}/
-  tags:
-    - dotfiles
+- name: Ensure github.com is a known host.
+  lineinfile:
+    dest: "{{ ansible_env.HOME }}/.ssh/known_hosts"
+    create: yes
+    state: present
+    line: "{{ lookup('pipe', 'ssh-keyscan -t rsa github.com') }}"
+    regexp: "^github\\.com"
+
+- name: Install homeshick
+  git:
+    repo: git://github.com/andsens/homeshick.git
+    dest: "{{ ansible_env.HOME }}/.homesick/repos/homeshick"
+
+- name: Update bashrc to have homeshick initialization
+  lineinfile:
+    dest: "{{ ansible_env.HOME }}/.bashrc"
+    line: 'source "$HOME/.homesick/repos/homeshick/homeshick.sh"'
+    regexp: 'homeshick'
+    create: yes
+
+- name: Clone dotfiles repo.
+  git:
+    repo: "{{ dotfiles_repo }}"
+    dest: "{{ ansible_env.HOME }}/.homesick/repos/dotfiles"
+  register: clone_dotfiles_result
+
+- name: Create symlinks for dotfiles.
+  command: "{{ ansible_env.HOME}}/.homesick/repos/homeshick/bin/homeshick link dotfiles -f -q"
+  when: clone_dotfiles_result.changed
 
 - name: Install Vundle.
   git:
     repo: https://github.com/VundleVim/Vundle.vim
     dest: /home/{{ username }}/.vim/bundle/Vundle.vim
-  tags:
-    - dotfiles
 
 - name: Install vim plugins.
   command: vim +PluginInstall +qall
-  tags:
-    - dotfiles
+  when: clone_dotfiles_result.changed
 
   # Haven't found a way to clean unwanted plugins
   # noninteractively.
