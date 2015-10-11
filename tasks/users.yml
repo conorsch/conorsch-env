@@ -1,15 +1,17 @@
 ---
 # create user account and add ssh keys via github
 - name: Create group for user.
-  group: name={{username}} state=present
+  group:
+    name: "{{ username }}"
+    state: present
   sudo: true
 
 - name: Create user.
   user:
-    name: "{{username}}"
-    groups: "{{username}}"
+    name: "{{ username }}"
+    groups: "{{ username }}"
     append: yes
-    shell: "{{default_shell}}"
+    shell: "{{ default_shell }}"
   sudo: true
 
 - name: Add authorized SSH keys for user.
@@ -33,7 +35,7 @@
 
 - name: Remove passwordless sudo from personal machines.
   file:
-    path: /etc/sudoers.d/{{username}}
+    path: /etc/sudoers.d/{{ username }}
     state: absent
   sudo: true
   when: "'personal' in group_names"
@@ -43,7 +45,7 @@
 - name: Tighten up permissions on home directory.
   file:
     state: directory
-    path: /home/{{ username }}
+    path: "{{ ansible_env.HOME }}"
     mode: "0750"
     owner: "{{ username }}"
     group: "{{ username }}"

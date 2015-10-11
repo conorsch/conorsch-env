@@ -64,17 +64,23 @@
 
 # Configures Konsole dotfiles
 - name: Copy konsolerc.
-  copy: src=konsolerc dest="~{{username}}/.kde/share/config/konsolerc"
+  copy:
+    src: konsolerc
+    dest: "{{ ansible_env.HOME }}/.kde/share/config/konsolerc"
   tags:
     - konsole
 
 - name: Copy default Konsole profile.
-  copy: src=Shell.profile dest="~{{username}}/.kde/share/apps/konsole/Shell.profile"
+  copy:
+    src: Shell.profile
+    dest: "{{ ansible_env.HOME }}/.kde/share/apps/konsole/Shell.profile"
   tags:
     - konsole
 
 - name: Copy custom Konsole color scheme.
-  copy: src=Linux.colorscheme dest="~{{username}}/.kde/share/apps/konsole/Linux.colorscheme"
+  copy:
+    src: Linux.colorscheme
+    dest: "{{ ansible_env.HOME }}/.kde/share/apps/konsole/Linux.colorscheme"
   tags:
     - konsole
 
@@ -84,13 +90,13 @@
     owner: "{{ username }}"
     group: "{{ username }}"
     mode: "0700"
-    path: "~{{ username }}/.config/nitrogen"
+    path: "{{ ansible_env.HOME }}/.config/nitrogen"
   tags:
     - nitrogen
 
 - name: Copy Nitrogen config.
   copy:
-    dest: ~{{ username }}/.config/nitrogen/{{ item }}
+    dest: "{{ ansible_env.HOME }}/.config/nitrogen/{{ item }}"
     src: nitrogen/{{ item }}
     owner: "{{ username }}"
     group: "{{ username }}"

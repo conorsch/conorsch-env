@@ -7,19 +7,19 @@
 
 - include: dotfiles.yml
   sudo: true
-  sudo_user: "{{username}}"
+  sudo_user: "{{ username }}"
   tags:
     - dotfiles
 
 - include: liquidprompt.yml
   sudo: true
-  sudo_user: "{{username}}"
+  sudo_user: "{{ username }}"
   tags:
     - dotfiles
 
 - include: rubygems.yml
   sudo: true
-  sudo_user: "{{username}}"
+  sudo_user: "{{ username }}"
   tags:
     - rubygems
     - gems

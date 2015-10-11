@@ -32,7 +32,7 @@
 - name: Install Vundle.
   git:
     repo: https://github.com/VundleVim/Vundle.vim
-    dest: /home/{{ username }}/.vim/bundle/Vundle.vim
+    dest: "{{ ansible_env.HOME }}/.vim/bundle/Vundle.vim"
 
 - name: Install vim plugins.
   command: vim +PluginInstall +qall

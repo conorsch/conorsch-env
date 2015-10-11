@@ -4,7 +4,7 @@
 
 - name: Install favorite packages.
   apt:
-    pkg: "{{item}}"
+    pkg: "{{ item }}"
     state: installed
     update_cache: yes
   with_items: favorite_packages
@@ -41,9 +41,6 @@
   pip:
     state: latest
     name: "{{ item }}"
-    extra_args: "--user"
-  sudo: true
-  sudo_user: "{{ username }}"
   with_items: pip_packages
   tags:
     - pip
