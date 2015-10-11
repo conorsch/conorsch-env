@@ -29,6 +29,8 @@
 
 - name: Convert dotfiles repo origin format from HTTPS to SSH.
   command: git remote set-url origin {{ dotfiles_repo_url_ssh }}
+  args:
+    chdir: "{{ ansible_env.HOME }}/.homesick/repos/dotfiles"
   when: clone_dotfiles_result.changed
 
 - name: Create symlinks for dotfiles.
