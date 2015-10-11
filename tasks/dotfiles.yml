@@ -40,8 +40,16 @@
     repo: https://github.com/VundleVim/Vundle.vim
     dest: "{{ ansible_env.HOME }}/.vim/bundle/Vundle.vim"
 
+- name: Install VimPlug.
+  git:
+    repo: https://github.com/VundleVim/Vundle.vim
+    dest: "{{ ansible_env.HOME }}/.vim/bundle/Vundle.vim"
+
 - name: Install vim plugins.
-  command: vim +PluginInstall +qall
+  # Vundle command
+  # command: vim +PluginInstall +qall
+  # VimPlug command
+  command: vim +PlugInstall +qall
   when: clone_dotfiles_result.changed
 
   # Haven't found a way to clean unwanted plugins
