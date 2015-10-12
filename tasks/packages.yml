@@ -42,6 +42,8 @@
     state: latest
     name: "{{ item }}"
     extra_args: "--user"
-  with_items: pip_packages
+  # Joining the package list into a consolidated item makes
+  # the pip task much, much faster: 3s, down from 20s with 10 packages.
+  with_items: pip_packages | join(' ')
   tags:
     - pip
