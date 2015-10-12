@@ -2,12 +2,14 @@
 - name: Include OS-specific vars.
   include_vars: "{{ ansible_distribution }}.yml"
 
-- name: Install favorite packages.
+- name: Install common packages.
   apt:
     pkg: "{{ item }}"
     state: installed
     update_cache: yes
   with_items: favorite_packages
+  register: common_apt_packages_result
+  changed_when: "'0 upgraded, 0 newly installed,' not in common_apt_packages_result.stdout"
   sudo: true
   tags:
     - packages
