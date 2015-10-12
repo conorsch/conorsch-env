@@ -21,17 +21,18 @@
     regexp: 'homeshick'
     create: yes
 
+- name: Convert dotfiles repo origin format from SSH to HTTPS.
+  command: git remote set-url origin {{ dotfiles_repo_url_https }}
+  args:
+    chdir: "{{ ansible_env.HOME }}/.homesick/repos/dotfiles"
+  # Only expect SSH auth when a valid private key is present.
+  when: "'personal' in group_names"
+
 - name: Clone dotfiles repo.
   git:
     repo: "{{ dotfiles_repo_url_https }}"
     dest: "{{ ansible_env.HOME }}/.homesick/repos/dotfiles"
   register: clone_dotfiles_result
-
-- name: Convert dotfiles repo origin format from HTTPS to SSH.
-  command: git remote set-url origin {{ dotfiles_repo_url_ssh }}
-  args:
-    chdir: "{{ ansible_env.HOME }}/.homesick/repos/dotfiles"
-  when: clone_dotfiles_result.changed
 
 - name: Create symlinks for dotfiles.
   command: "{{ ansible_env.HOME}}/.homesick/repos/homeshick/bin/homeshick link dotfiles -f -q"
@@ -43,9 +44,9 @@
     dest: "{{ ansible_env.HOME }}/.vim/bundle/Vundle.vim"
 
 - name: Install VimPlug.
-  git:
-    repo: https://github.com/VundleVim/Vundle.vim
-    dest: "{{ ansible_env.HOME }}/.vim/bundle/Vundle.vim"
+  get_url:
+    url: "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
+    dest: "{{ ansible_env.HOME }}/.vim/autoload/plug.vim"
 
 - name: Install vim plugins.
   # Vundle command
