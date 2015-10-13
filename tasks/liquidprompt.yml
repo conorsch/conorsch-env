@@ -9,6 +9,6 @@
 - name: Clone liquidprompt git repository.
   git:
     repo: https://github.com/nojhan/liquidprompt/
-    dest: "{{ ansible_env.HOME }}/.homesick/repos/liquidprompt"
+    dest: "~{{ username }}/.homesick/repos/liquidprompt"
     accept_hostkey: true
 

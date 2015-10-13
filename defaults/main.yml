@@ -1,7 +1,11 @@
 ---
 # defaults file for conorsch-env
-username: conor
-git_directory: "{{ ansible_env.HOME }}/gits"
+# If you don't set "username", the role will assume you want
+# to configure the environment for the user you're SSHing in as.
+# Normally we'd simply ansible_user_id, but providing the
+# "username" variable allows for overriding, so the role is more flexible.
+username: "{{ ansible_user_id }}"
+git_directory: "~{{ username }}/gits"
 github_username: conorsch
 github_key_url: https://github.com/{{ github_username }}.keys
 dotfiles_repo_url_https: https://github.com/{{ github_username }}/dotfiles

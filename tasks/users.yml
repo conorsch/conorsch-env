@@ -45,7 +45,8 @@
 - name: Tighten up permissions on home directory.
   file:
     state: directory
-    path: "{{ ansible_env.HOME }}"
+    path: "/home/{{ username }}"
     mode: "0750"
     owner: "{{ username }}"
     group: "{{ username }}"
+  sudo: no

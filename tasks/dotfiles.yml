@@ -1,7 +1,7 @@
 ---
 - name: Ensure github.com is a known host.
   lineinfile:
-    dest: "{{ ansible_env.HOME }}/.ssh/known_hosts"
+    dest: "~{{ username }}/.ssh/known_hosts"
     create: yes
     state: present
     line: "{{ lookup('pipe', 'ssh-keyscan -t rsa github.com') }}"
@@ -12,11 +12,11 @@
 - name: Install homeshick
   git:
     repo: git://github.com/andsens/homeshick.git
-    dest: "{{ ansible_env.HOME }}/.homesick/repos/homeshick"
+    dest: "~{{ username }}/.homesick/repos/homeshick"
 
 - name: Update bashrc to have homeshick initialization
   lineinfile:
-    dest: "{{ ansible_env.HOME }}/.bashrc"
+    dest: "~{{ username }}/.bashrc"
     line: 'source "$HOME/.homesick/repos/homeshick/homeshick.sh"'
     regexp: 'homeshick'
     create: yes
@@ -24,29 +24,29 @@
 - name: Convert dotfiles repo origin format from SSH to HTTPS.
   command: git remote set-url origin {{ dotfiles_repo_url_https }}
   args:
-    chdir: "{{ ansible_env.HOME }}/.homesick/repos/dotfiles"
+    chdir: "~{{ username }}/.homesick/repos/dotfiles"
   # Only expect SSH auth when a valid private key is present.
   when: "'personal' in group_names"
 
 - name: Clone dotfiles repo.
   git:
     repo: "{{ dotfiles_repo_url_https }}"
-    dest: "{{ ansible_env.HOME }}/.homesick/repos/dotfiles"
+    dest: "~{{ username }}/.homesick/repos/dotfiles"
   register: clone_dotfiles_result
 
 - name: Create symlinks for dotfiles.
-  command: "{{ ansible_env.HOME}}/.homesick/repos/homeshick/bin/homeshick link dotfiles -f -q"
+  command: "~{{ username }}/.homesick/repos/homeshick/bin/homeshick link dotfiles -f -q"
   when: clone_dotfiles_result.changed
 
 - name: Install Vundle.
   git:
     repo: https://github.com/VundleVim/Vundle.vim
-    dest: "{{ ansible_env.HOME }}/.vim/bundle/Vundle.vim"
+    dest: "~{{ username }}/.vim/bundle/Vundle.vim"
 
 - name: Install VimPlug.
   get_url:
     url: "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
-    dest: "{{ ansible_env.HOME }}/.vim/autoload/plug.vim"
+    dest: "~{{ username }}/.vim/autoload/plug.vim"
 
 - name: Install vim plugins.
   # Vundle command
