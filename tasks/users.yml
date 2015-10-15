@@ -29,7 +29,7 @@
     group: root
     mode: "0644"
   sudo: true
-  when: "'droplets' in group_names"
+  when: "'personal' not in group_names"
   tags:
     - sudo
 
