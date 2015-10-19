@@ -2,12 +2,6 @@
 # vars file for ronocdh-env
 # see "defaults/main.yml"
 pip_packages:
-  - python-nmap
-  - netifaces
-  - arrow
-  - docopt
-  - BeautifulSoup
   - requests
   - python-digitalocean
   - etym
-  - grip

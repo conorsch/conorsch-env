@@ -9,7 +9,6 @@
     update_cache: yes
   with_items: favorite_packages
   register: common_apt_packages_result
-  changed_when: "'0 upgraded, 0 newly installed,' not in common_apt_packages_result.stdout"
   sudo: true
   tags:
     - packages
@@ -20,12 +19,16 @@
     state: absent
   sudo: true
   when: 'ansible_distribution == "Debian"'
+  tags:
+    - pip
 
 - name: easy_install pip on Debian
   easy_install:
     name: pip
   sudo: true
   when: 'ansible_distribution == "Debian"'
+  tags:
+    - pip
 
   # Without requests[security], under Ubuntu,
   # libcurl3 throws insecure SSL warnings.
