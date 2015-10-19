@@ -3,11 +3,15 @@
 # for headless server environments. See defaults/main.yml
 # to override these settings.
 
+- name: Include OS-specific vars.
+  include_vars: "{{ ansible_distribution }}.yml"
+
 - name: Add PPA for Firefox Developer Edition.
   apt_repository:
     repo: ppa:ubuntu-mozilla-daily/firefox-aurora
     state: present
   sudo: true
+  when: ansible_distribution == 'Ubuntu'
   tags:
     - ppa
 
@@ -16,6 +20,7 @@
     repo: ppa:mozillateam/thunderbird-next
     state: present
   sudo: true
+  when: ansible_distribution == 'Ubuntu'
   tags:
     - ppa
 
@@ -24,27 +29,16 @@
     repo: ppa:micahflee/ppa
     state: present
   sudo: true
+  when: ansible_distribution == 'Ubuntu'
   tags:
     - ppa
 
 - name: Install graphical packages.
   apt:
-    pkg: "{{item}}"
+    pkg: "{{ item }}"
     state: installed
     update_cache: yes
-  with_items:
-    - dunst
-    - firefox
-    - i3
-    - i3lock
-    - i3status
-    - keepassx
-    - konsole
-    - nitrogen
-    - thunderbird
-    - torbrowser-launcher
-    - xautolock
-    - xcompmgr
+  with_items: common_graphical_packages
   sudo: true
   tags:
     - graphical
@@ -66,21 +60,21 @@
 - name: Copy konsolerc.
   copy:
     src: konsolerc
-    dest: "{{ ansible_env.HOME }}/.kde/share/config/konsolerc"
+    dest: "~{{ username }}/.kde/share/config/konsolerc"
   tags:
     - konsole
 
 - name: Copy default Konsole profile.
   copy:
     src: Shell.profile
-    dest: "{{ ansible_env.HOME }}/.kde/share/apps/konsole/Shell.profile"
+    dest: "~{{ username }}/.kde/share/apps/konsole/Shell.profile"
   tags:
     - konsole
 
 - name: Copy custom Konsole color scheme.
   copy:
     src: Linux.colorscheme
-    dest: "{{ ansible_env.HOME }}/.kde/share/apps/konsole/Linux.colorscheme"
+    dest: "~{{ username }}/.kde/share/apps/konsole/Linux.colorscheme"
   tags:
     - konsole
 
@@ -90,13 +84,13 @@
     owner: "{{ username }}"
     group: "{{ username }}"
     mode: "0700"
-    path: "{{ ansible_env.HOME }}/.config/nitrogen"
+    path: "~{{ username }}/.config/nitrogen"
   tags:
     - nitrogen
 
 - name: Copy Nitrogen config.
   copy:
-    dest: "{{ ansible_env.HOME }}/.config/nitrogen/{{ item }}"
+    dest: "~{{ username }}/.config/nitrogen/{{ item }}"
     src: nitrogen/{{ item }}
     owner: "{{ username }}"
     group: "{{ username }}"

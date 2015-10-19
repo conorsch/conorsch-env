@@ -1,5 +1,5 @@
 ---
-favorite_packages:
+common_packages:
     - build-essential
     - byobu
     - git
@@ -11,3 +11,16 @@ favorite_packages:
     - tmux
     - tree
     - vim
+
+common_graphical_packages:
+    - dunst
+    - i3
+    - i3lock
+    - i3status
+    - keepassx
+    - konsole
+    - nitrogen
+    - xautolock
+    - xcompmgr
+    - xinit
+    - xserver-xorg-core

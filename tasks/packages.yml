@@ -7,7 +7,7 @@
     pkg: "{{ item }}"
     state: installed
     update_cache: yes
-  with_items: favorite_packages
+  with_items: common_packages
   register: common_apt_packages_result
   sudo: true
   tags:
