@@ -20,6 +20,7 @@ common_graphical_packages:
     - i3status
     - keepassx
     - konsole
+    - network-manager
     - nitrogen
     - thunderbird
     - torbrowser-launcher
