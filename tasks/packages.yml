@@ -41,6 +41,7 @@
   when: ansible_distribution == "Ubuntu"
   tags:
     - pip
+    - ubuntu-specific
 
 - name: Install pip packages.
   pip:

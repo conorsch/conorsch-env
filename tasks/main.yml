@@ -1,9 +1,12 @@
 ---
-- include: users.yml tags=users
+- include: users.yml
+  tags: users
 
-- include: packages.yml tags=packages
+- include: packages.yml
+  tags: packages
 
-- include: dotfiles.yml tags=dotfiles
+- include: dotfiles.yml
+  tags: dotfiles
   sudo: true
   sudo_user: "{{ username }}"
 
