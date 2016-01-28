@@ -5,11 +5,6 @@
 - include: packages.yml
   tags: packages
 
-- include: dotfiles.yml
-  tags: dotfiles
-  sudo: true
-  sudo_user: "{{ username }}"
-
 - include: liquidprompt.yml
   sudo: true
   sudo_user: "{{ username }}"
