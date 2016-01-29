@@ -13,36 +13,6 @@
   tags:
     - packages
 
-- name: Remove system python-pip on Debian.
-  apt:
-    name: python-pip
-    state: absent
-  sudo: true
-  when: 'ansible_distribution == "Debian"'
-  tags:
-    - pip
-
-- name: easy_install pip on Debian
-  easy_install:
-    name: pip
-  sudo: true
-  when: 'ansible_distribution == "Debian"'
-  tags:
-    - pip
-
-  # Without requests[security], under Ubuntu,
-  # libcurl3 throws insecure SSL warnings.
-  # Under Debian, though, trying to install requests[security]
-  # with --user via Ansible
-- name: Install requests[security] on Ubuntu.
-  pip:
-    state: latest
-    name: requests[security]
-  when: ansible_distribution == "Ubuntu"
-  tags:
-    - pip
-    - ubuntu-specific
-
 - name: Install pip packages.
   pip:
     state: latest
