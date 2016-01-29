@@ -1,5 +1,10 @@
 ---
 # create user account and add ssh keys via github
+- name: Fallback from root to normal user for env config.
+  set_fact:
+    username: "{{ lookup('pipe', 'whoami') }}"
+  when: ansible_user_id == "root"
+
 - name: Create group for user.
   group:
     name: "{{ username }}"

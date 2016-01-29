@@ -1,9 +1,9 @@
 ---
-- include: users.yml
-  tags: users
-
 - include: packages.yml
   tags: packages
+
+- include: users.yml
+  tags: users
 
 - include: liquidprompt.yml
   sudo: true
