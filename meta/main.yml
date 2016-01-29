@@ -22,3 +22,4 @@ dependencies:
     name: homeshick
   - src: https://github.com/bobbyrenwick/ansible-role-pip
     name: bobbyrenwick.pip
+    pip_version: "LATEST"
