@@ -8,8 +8,6 @@ username: "{{ ansible_user_id }}"
 git_directory: "~{{ username }}/gits"
 github_username: conorsch
 github_key_url: https://github.com/{{ github_username }}.keys
-dotfiles_repo_url_https: https://github.com/{{ github_username }}/dotfiles
-dotfiles_repo_url_ssh: git@github.com:{{ github_username }}/dotfiles.git
 default_shell: /bin/bash
 include_graphical_packages: false
 DEBUG: false
