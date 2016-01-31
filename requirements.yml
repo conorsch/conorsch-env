@@ -1,0 +1,4 @@
+---
+- name: bobbyrenwick.pip
+  src: https://github.com/bobbyrenwick/ansible-role-pip
+
