@@ -74,7 +74,10 @@
 - name: Copy custom Konsole color scheme.
   copy:
     src: Linux.colorscheme
-    dest: "~{{ username }}/.kde/share/apps/konsole/Linux.colorscheme"
+    # Default location is here, and has a pristine copy.
+    # dest: "~{{ username }}/.kde/share/apps/konsole/Linux.colorscheme"
+    # Custom location, overrides the default.
+    dest: "~{{ username }}/.local/share/konsole/Linux.colorscheme"
   tags:
     - konsole
 
