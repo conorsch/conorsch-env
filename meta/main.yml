@@ -18,8 +18,8 @@ galaxy_info:
     - packaging
     - system
 dependencies:
-  - src: https://github.com/conorsch/ansible-role-homeshick
-    name: homeshick
+  - role: homeshick
+
   - src: https://github.com/bobbyrenwick/ansible-role-pip
     name: bobbyrenwick.pip
     pip_version: "LATEST"
