@@ -71,6 +71,16 @@
   tags:
     - konsole
 
+  # TODO: All Konsole-related tasks should be writing to the ~/.local
+  # directory, since it overrides the defaults in ~/.kde.
+- name: Create local Konsole config directory.
+  file:
+    state: directory
+    path: "~{{ username }}/.local/share/konsole"
+    owner: "{{ username }}"
+    group: "{{ username }}"
+    mode: "0750"
+
 - name: Copy custom Konsole color scheme.
   copy:
     src: Linux.colorscheme
