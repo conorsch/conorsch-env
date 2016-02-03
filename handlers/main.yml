@@ -1,2 +1,7 @@
 ---
 # handlers file for ronocdh-env
+
+- name: restore nitrogen config
+  become: no
+  command: nitrogen --restore
+

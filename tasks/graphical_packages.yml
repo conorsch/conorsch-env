@@ -111,6 +111,7 @@
   with_items:
     - nitrogen.cfg
     - bg-saved.cfg
+  notify: restore nitrogen config
   tags:
     - nitrogen
 
