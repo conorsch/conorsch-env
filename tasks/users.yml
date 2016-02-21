@@ -14,8 +14,6 @@
 - name: Create user.
   user:
     name: "{{ username }}"
-    groups: "{{ username }}"
-    append: yes
     shell: "{{ default_shell }}"
   sudo: true
 
