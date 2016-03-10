@@ -10,7 +10,7 @@
   apt_repository:
     repo: ppa:ubuntu-mozilla-daily/firefox-aurora
     state: present
-  sudo: true
+  become: yes
   when: ansible_distribution == 'Ubuntu'
   tags:
     - ppa
@@ -19,7 +19,7 @@
   apt_repository:
     repo: ppa:mozillateam/thunderbird-next
     state: present
-  sudo: true
+  become: yes
   when: ansible_distribution == 'Ubuntu'
   tags:
     - ppa
@@ -28,7 +28,7 @@
   apt_repository:
     repo: ppa:micahflee/ppa
     state: present
-  sudo: true
+  become: yes
   when: ansible_distribution == 'Ubuntu'
   tags:
     - ppa
@@ -39,7 +39,7 @@
     state: installed
     update_cache: yes
   with_items: common_graphical_packages
-  sudo: true
+  become: yes
   tags:
     - graphical
     - gui

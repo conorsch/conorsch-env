@@ -9,13 +9,13 @@
   group:
     name: "{{ username }}"
     state: present
-  sudo: true
+  become: yes
 
 - name: Create user.
   user:
     name: "{{ username }}"
     shell: "{{ default_shell }}"
-  sudo: true
+  become: yes
 
 - name: Add authorized SSH keys for user.
   authorized_key:
@@ -31,7 +31,7 @@
     owner: root
     group: root
     mode: "0644"
-  sudo: true
+  become: yes
   when: "'personal' not in group_names"
   tags:
     - sudo
@@ -40,7 +40,7 @@
   file:
     path: /etc/sudoers.d/{{ username }}
     state: absent
-  sudo: true
+  become: yes
   when: "'personal' in group_names"
   tags:
     - sudo
@@ -52,4 +52,4 @@
     mode: "0750"
     owner: "{{ username }}"
     group: "{{ username }}"
-  sudo: no
+  become: no
