@@ -3,4 +3,3 @@
   git:
     repo: https://github.com/nojhan/liquidprompt/
     dest: "~{{ username }}/.homesick/repos/liquidprompt"
-    accept_hostkey: true
