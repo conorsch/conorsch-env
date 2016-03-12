@@ -18,7 +18,5 @@ galaxy_info:
     - packaging
     - system
 dependencies:
-  - role: homeshick
-
   - role: bobbyrenwick.pip
     pip_version: "LATEST"
