@@ -19,8 +19,6 @@ Available variables are listed below, along with default values (see `defaults/m
     username: conor
 The username for environment configuration. User-level calls will be sudoized to this username.
 
-    git_directory: "~{{username}}/gits"
-
 Default directory for storing git projects. Does not include homeshick projects.
 
     dotfiles_repo: git://github.com/ronocdh/dotfiles.git

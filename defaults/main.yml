@@ -5,7 +5,6 @@
 # Normally we'd simply ansible_user_id, but providing the
 # "username" variable allows for overriding, so the role is more flexible.
 username: "{{ ansible_user_id }}"
-git_directory: "~{{ username }}/gits"
 github_username: conorsch
 github_key_url: https://github.com/{{ github_username }}.keys
 default_shell: /bin/bash
