@@ -1,16 +1,12 @@
 ---
 - include: packages.yml
-  tags: packages
 
 - include: users.yml
-  tags: users
 
 - include: rubygems.yml
-  become: yes
-  become_user: "{{ username }}"
-  tags:
-    - rubygems
-    - gems
 
 - include: graphical_packages.yml
+  when: include_graphical_packages
+
+- include: nitrogen.yml
   when: include_graphical_packages
