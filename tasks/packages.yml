@@ -1,7 +1,4 @@
 ---
-- name: Include OS-specific vars.
-  include_vars: "{{ ansible_distribution }}.yml"
-
 - name: Install common packages.
   apt:
     pkg: "{{ item }}"
