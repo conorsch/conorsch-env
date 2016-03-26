@@ -1,5 +1,0 @@
----
-# include task for testing vagrant machine
-- hosts: vagrant
-  roles:
-    - conorsch-env

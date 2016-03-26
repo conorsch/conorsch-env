@@ -1,6 +1,0 @@
----
-# include task for testing via travis-ci
-- hosts: localhost
-  remote_user: root
-  roles:
-    - conorsch-env
