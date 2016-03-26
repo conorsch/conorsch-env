@@ -2,36 +2,12 @@
 # Installs packages that require X, so inapproriate
 # for headless server environments. See defaults/main.yml
 # to override these settings.
-
-- name: Include OS-specific vars.
-  include_vars: "{{ ansible_distribution }}.yml"
-
-- name: Add PPA for Firefox Developer Edition.
-  apt_repository:
-    repo: ppa:ubuntu-mozilla-daily/firefox-aurora
-    state: present
-  become: yes
-  when: ansible_distribution == 'Ubuntu'
-  tags:
-    - ppa
-
-- name: Add PPA for Thunderbird Beta Channel.
-  apt_repository:
-    repo: ppa:mozillateam/thunderbird-next
-    state: present
-  become: yes
-  when: ansible_distribution == 'Ubuntu'
-  tags:
-    - ppa
-
 - name: Add PPA for Tor Browser Launcher.
   apt_repository:
     repo: ppa:micahflee/ppa
     state: present
   become: yes
   when: ansible_distribution == 'Ubuntu'
-  tags:
-    - ppa
 
 - name: Install graphical packages.
   apt:
