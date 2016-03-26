@@ -1,5 +1,0 @@
----
-- name: Clone liquidprompt git repository.
-  git:
-    repo: https://github.com/nojhan/liquidprompt/
-    dest: "~{{ username }}/.homesick/repos/liquidprompt"
