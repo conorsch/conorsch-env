@@ -1,7 +1,8 @@
 * Break out into separate roles:
   * homeshick
-  * konsole
   * i3
+
+  * konsole
   * sudoers
   * firefox
   * thunderbird
