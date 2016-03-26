@@ -11,3 +11,13 @@ default_shell: /bin/bash
 include_graphical_packages: false
 DEBUG: false
 
+common_packages:
+    - byobu
+    - htop
+    - ipython
+    - tree
+
+common_graphical_packages:
+    - keepassx
+    - network-manager
+    - nitrogen
