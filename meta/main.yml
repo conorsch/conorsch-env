@@ -17,6 +17,4 @@ galaxy_info:
   categories:
     - packaging
     - system
-dependencies:
-  - role: bobbyrenwick.pip
-    pip_version: "LATEST"
+dependencies: []
