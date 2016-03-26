@@ -5,7 +5,6 @@
     state: installed
     update_cache: yes
   with_items: common_packages
-  register: common_apt_packages_result
   become: yes
   tags:
     - packages

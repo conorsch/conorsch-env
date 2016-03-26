@@ -14,10 +14,10 @@ DEBUG: false
 common_packages:
     - byobu
     - htop
-    - ipython
     - tree
 
 common_graphical_packages:
+    - ipython
     - keepassx
     - network-manager
     - nitrogen

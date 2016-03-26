@@ -5,6 +5,3 @@
     state: present
   with_items:
     - hub
-    # Not sure why, but tugboat gem  is broken,
-    # maybe needs a version freeze.
-    # - tugboat
