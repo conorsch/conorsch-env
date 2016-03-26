@@ -20,8 +20,3 @@
 
 - include: graphical_packages.yml
   when: include_graphical_packages
-
-- include: kde_config.yml
-  when: DEBUG
-  tags:
-    - DEBUG
