@@ -4,7 +4,7 @@
     pkg: "{{ item }}"
     state: installed
     update_cache: yes
-  with_items: conorsch_env_common_packages
+  with_items: "{{ conorsch_env_common_packages }}"
   become: yes
   tags:
     - packages
@@ -16,7 +16,7 @@
     extra_args: "--user"
   # Joining the package list into a consolidated item makes
   # the pip task much, much faster: 3s, down from 20s with 10 packages.
-  with_items: pip_packages | join(' ')
+  with_items: "{{ pip_packages | join(' ') }}"
   # Running inside a virtualenv, the --user flag will cause the call to fail.
   when: "'VIRTUAL_ENV' not in ansible_env"
   tags:
