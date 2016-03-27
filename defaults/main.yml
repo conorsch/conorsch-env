@@ -1,15 +1,14 @@
 ---
 # defaults file for conorsch-env
-# If you don't set "username", the role will assume you want
+# If you don't set "conorsch_env_username", the role will assume you want
 # to configure the environment for the user you're SSHing in as.
 # Normally we'd simply ansible_user_id, but providing the
-# "username" variable allows for overriding, so the role is more flexible.
-username: "{{ ansible_user_id }}"
+# "conorsch_env_username" variable allows for overriding, so the role is more flexible.
+conorsch_env_username: "{{ ansible_user_id }}"
 github_username: conorsch
 github_key_url: https://github.com/{{ github_username }}.keys
 default_shell: /bin/bash
 include_graphical_packages: false
-DEBUG: false
 
 common_packages:
     - byobu

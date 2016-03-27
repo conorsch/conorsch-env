@@ -9,19 +9,19 @@
 - name: Create nitrogen config directory.
   file:
     state: directory
-    owner: "{{ username }}"
-    group: "{{ username }}"
+    owner: "{{ conorsch_env_username }}"
+    group: "{{ conorsch_env_username }}"
     mode: "0700"
-    path: "~{{ username }}/.config/nitrogen"
+    path: "~{{ conorsch_env_username }}/.config/nitrogen"
   tags:
     - nitrogen
 
 - name: Copy nitrogen config.
   copy:
-    dest: "~{{ username }}/.config/nitrogen/{{ item }}"
+    dest: "~{{ conorsch_env_username }}/.config/nitrogen/{{ item }}"
     src: nitrogen/{{ item }}
-    owner: "{{ username }}"
-    group: "{{ username }}"
+    owner: "{{ conorsch_env_username }}"
+    group: "{{ conorsch_env_username }}"
     mode: "0600"
   with_items:
     - nitrogen.cfg

@@ -16,8 +16,8 @@ Role Variables
 
 Available variables are listed below, along with default values (see `defaults/main.yml`):
 
-    username: conor
-The username for environment configuration. User-level calls will be sudoized to this username.
+    conorsch_env_username: conor
+The conorsch_env_username for environment configuration. User-level calls will be sudoized to this conorsch_env_username.
 
 Default directory for storing git projects. Does not include homeshick projects.
 
@@ -42,8 +42,8 @@ Including an example of how to use your role (for instance, with variables passe
 
 *Inside `vars/main.yml`*:
 
-    username: yourusername
-    dotfiles_repo: git://github.com/yourusername/dotfiles.git
+    conorsch_env_username: yourconorsch_env_username
+    dotfiles_repo: git://github.com/yourconorsch_env_username/dotfiles.git
 
 License
 -------

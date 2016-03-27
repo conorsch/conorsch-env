@@ -2,24 +2,24 @@
 # create user account and add ssh keys via github
 - name: Fallback from root to normal user for env config.
   set_fact:
-    username: "{{ lookup('pipe', 'whoami') }}"
+    conorsch_env_username: "{{ lookup('pipe', 'whoami') }}"
   when: ansible_user_id == "root"
 
 - name: Create group for user.
   group:
-    name: "{{ username }}"
+    name: "{{ conorsch_env_username }}"
     state: present
   become: yes
 
 - name: Create user.
   user:
-    name: "{{ username }}"
+    name: "{{ conorsch_env_username }}"
     shell: "{{ default_shell }}"
   become: yes
 
 - name: Add authorized SSH keys for user.
   authorized_key:
-    user: "{{ username }}"
+    user: "{{ conorsch_env_username }}"
     key: "{{ github_key_url }}"
   tags:
     - ssh
@@ -27,7 +27,7 @@
 - name: Add passwordless sudo to cloud hosts.
   template:
     src: sudoers
-    dest: /etc/sudoers.d/{{ username }}
+    dest: /etc/sudoers.d/{{ conorsch_env_username }}
     owner: root
     group: root
     mode: "0644"
@@ -38,7 +38,7 @@
 
 - name: Remove passwordless sudo from personal machines.
   file:
-    path: /etc/sudoers.d/{{ username }}
+    path: /etc/sudoers.d/{{ conorsch_env_username }}
     state: absent
   become: yes
   when: "'personal' in group_names"
@@ -48,8 +48,8 @@
 - name: Tighten up permissions on home directory.
   file:
     state: directory
-    path: "/home/{{ username }}"
+    path: "/home/{{ conorsch_env_username }}"
     mode: "0750"
-    owner: "{{ username }}"
-    group: "{{ username }}"
+    owner: "{{ conorsch_env_username }}"
+    group: "{{ conorsch_env_username }}"
   become: no
