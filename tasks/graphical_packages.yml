@@ -14,7 +14,7 @@
     pkg: "{{ item }}"
     state: installed
     update_cache: yes
-  with_items: common_graphical_packages
+  with_items: conorsch_env_common_graphical_packages
   become: yes
   tags:
     - graphical

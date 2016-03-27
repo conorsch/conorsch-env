@@ -14,13 +14,13 @@
 - name: Create user.
   user:
     name: "{{ conorsch_env_username }}"
-    shell: "{{ default_shell }}"
+    shell: "{{ conorsch_env_default_shell }}"
   become: yes
 
 - name: Add authorized SSH keys for user.
   authorized_key:
     user: "{{ conorsch_env_username }}"
-    key: "{{ github_key_url }}"
+    key: "{{ conorsch_env_github_key_url }}"
   tags:
     - ssh
 

@@ -4,7 +4,7 @@
     pkg: "{{ item }}"
     state: installed
     update_cache: yes
-  with_items: common_packages
+  with_items: conorsch_env_common_packages
   become: yes
   tags:
     - packages

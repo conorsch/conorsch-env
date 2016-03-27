@@ -5,17 +5,17 @@
 # Normally we'd simply ansible_user_id, but providing the
 # "conorsch_env_username" variable allows for overriding, so the role is more flexible.
 conorsch_env_username: "{{ ansible_user_id }}"
-github_username: conorsch
-github_key_url: https://github.com/{{ github_username }}.keys
-default_shell: /bin/bash
-include_graphical_packages: false
+conorsch_env_github_username: conorsch
+conorsch_env_github_key_url: https://github.com/{{ conorsch_env_github_username }}.keys
+conorsch_env_default_shell: /bin/bash
+conorsch_env_include_graphical_packages: false
 
-common_packages:
+conorsch_env_common_packages:
     - byobu
     - htop
     - tree
 
-common_graphical_packages:
+conorsch_env_common_graphical_packages:
     - ipython
     - keepassx
     - network-manager
