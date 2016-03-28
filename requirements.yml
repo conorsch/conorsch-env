@@ -2,3 +2,7 @@
 - name: bobbyrenwick.pip
   src: https://github.com/bobbyrenwick/ansible-role-pip
 
+- name: conorsch.i3
+- name: conorsch.konsole
+- name: conorsch.homeshick
+
