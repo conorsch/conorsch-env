@@ -1,0 +1,7 @@
+---
+- name: Bootstrap conorsch-env workstation.
+  hosts: localhost
+  connection: local
+  roles:
+    - role: conorsch-env
+      conorsch_env_include_graphical_packages: true
