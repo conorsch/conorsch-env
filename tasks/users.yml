@@ -24,27 +24,6 @@
   tags:
     - ssh
 
-- name: Add passwordless sudo to cloud hosts.
-  template:
-    src: sudoers
-    dest: /etc/sudoers.d/{{ conorsch_env_username }}
-    owner: root
-    group: root
-    mode: "0644"
-  become: yes
-  when: "'personal' not in group_names"
-  tags:
-    - sudo
-
-- name: Remove passwordless sudo from personal machines.
-  file:
-    path: /etc/sudoers.d/{{ conorsch_env_username }}
-    state: absent
-  become: yes
-  when: "'personal' in group_names"
-  tags:
-    - sudo
-
 - name: Tighten up permissions on home directory.
   file:
     state: directory
