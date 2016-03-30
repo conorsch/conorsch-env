@@ -14,8 +14,6 @@
     mode: "0700"
     path: "~{{ conorsch_env_username }}/.config/nitrogen"
   register: nitrogen_config_dir_result
-  tags:
-    - nitrogen
 
 - name: Copy nitrogen config.
   copy:
@@ -33,6 +31,3 @@
   # makes smart handling difficult in the context of this role. By default,
   # just install the package and create the config directory, but don't clobber.
   when: nitrogen_config_dir_result.changed == true
-  tags:
-    - nitrogen
-

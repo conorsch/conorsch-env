@@ -10,3 +10,4 @@
 
 - include: nitrogen.yml
   when: conorsch_env_include_graphical_packages == true
+  tags: nitrogen
