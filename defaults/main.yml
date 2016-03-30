@@ -20,3 +20,4 @@ conorsch_env_common_graphical_packages:
     - keepassx
     - network-manager
     - nitrogen
+    - scdaemon
