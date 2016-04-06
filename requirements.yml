@@ -2,7 +2,9 @@
 - name: bobbyrenwick.pip
   src: https://github.com/bobbyrenwick/ansible-pip
 
+- name: kosssi.gitconfig
+  src: https://github.com/kosssi/ansible-role-gitconfig
+
 - name: conorsch.i3
 - name: conorsch.konsole
 - name: conorsch.homeshick
-
