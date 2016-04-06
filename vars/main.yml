@@ -22,3 +22,8 @@ git_config:
     submodulesummary: 'true'
   diff:
     submodule: log
+
+git_ignore:
+  - '*.swp'
+  - 'Session.vim'
+  - '*.pyc'
