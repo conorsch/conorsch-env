@@ -21,3 +21,8 @@ conorsch_env_common_graphical_packages:
     - network-manager
     - nitrogen
     - scdaemon
+
+conorsch_env_pip_packages:
+  - requests
+  - python-digitalocean
+  - etym

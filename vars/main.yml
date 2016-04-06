@@ -1,8 +1,1 @@
 ---
-# vars file for ronocdh-env
-# see "defaults/main.yml"
-pip_packages:
-  - requests
-  - python-digitalocean
-  - etym
-
