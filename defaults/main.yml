@@ -26,3 +26,5 @@ conorsch_env_pip_packages:
   - requests
   - python-digitalocean
   - etym
+
+conorsch_env_git_email: conor.schaefer@gmail.com
