@@ -1,8 +1,6 @@
 ---
 - include: packages.yml
 
-- include: users.yml
-
 - include: rubygems.yml
 
 - include: graphical_packages.yml
