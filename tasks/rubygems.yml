@@ -1,7 +1,6 @@
 ---
-- name: Install Ruby gems.
+- name: Install gems.
   gem:
     name: "{{ item }}"
     state: present
-  with_items:
-    - hub
+  with_items: "{{ conorsch_env_ruby_gems }}"
