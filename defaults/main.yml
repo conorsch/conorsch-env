@@ -4,7 +4,11 @@
 # to configure the environment for the user you're SSHing in as.
 # Normally we'd simply ansible_user_id, but providing the
 # "conorsch_env_username" variable allows for overriding, so the role is more flexible.
-conorsch_env_username: "{{ ansible_user_id }}"
+conorsch_env_fallback_user: "{{ lookup('env', 'USER') }}"
+conorsch_env_username: >-
+  {{ ansible_ssh_user|default(conorsch_env_fallback_user)
+  if ansible_ssh_user|default(conorsch_env_fallback_user) != 'root' else  conorsch_env_fallback_user }}
+
 conorsch_env_github_username: conorsch
 conorsch_env_github_key_url: https://github.com/{{ conorsch_env_github_username }}.keys
 conorsch_env_default_shell: /bin/bash

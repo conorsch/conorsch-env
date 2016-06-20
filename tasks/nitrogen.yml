@@ -7,6 +7,7 @@
     state: present
 
 - name: Create nitrogen config directory.
+  become: no
   file:
     state: directory
     owner: "{{ conorsch_env_username }}"
@@ -28,6 +29,5 @@
   notify: restore nitrogen config
   # The nitrogen config file stores info on desktop backgrounds. The file
   # structure varies significantly if multiple monitors are attached, which
-  # makes smart handling difficult in the context of this role. By default,
-  # just install the package and create the config directory, but don't clobber.
-  when: nitrogen_config_dir_result.changed == true
+  # makes smart handling difficult. Disabling the configs to allow drift on hosts.
+  when: false
