@@ -1,0 +1,14 @@
+---
+- name: Find default subdirectories in home.
+  command: >
+    find ~{{ conorsch_env_username }}A -maxdepth 1 -type d
+    -and -empty -and -not -name '.*'
+  register: default_home_subdirs_check
+  changed_when: false
+
+- name: Remove default subdirectories in home.
+  file:
+    path: "{{ item.path }}"
+    state: absent
+  with_items: "{{ default_home_subdirs_check.results }}"
+  when: item.path|basename in conorsch_env_home_subdir_blacklist
