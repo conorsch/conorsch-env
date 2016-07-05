@@ -1,7 +1,7 @@
 ---
 - name: Find default subdirectories in home.
   command: >
-    find ~{{ conorsch_env_username }}A -maxdepth 1 -type d
+    find ~{{ conorsch_env_username }} -maxdepth 1 -type d
     -and -empty -and -not -name '.*'
   register: default_home_subdirs_check
   changed_when: false
