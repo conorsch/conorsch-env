@@ -31,3 +31,8 @@
   # structure varies significantly if multiple monitors are attached, which
   # makes smart handling difficult. Disabling the configs to allow drift on hosts.
   when: false
+
+- name: Clone desktop pictures repository.
+  git:
+    repo: "https://github.com/{{ conorsch_env_github_username }}/desktoppics"
+    dest: "~{{ conorsch_env_username }}/.desktoppics"
