@@ -7,13 +7,11 @@ galaxy_info:
   platforms:
     - name: Debian
       versions:
-        - wheezy
         - jessie
-
+        - stretch
     - name: Ubuntu
       versions:
-        - trusty
-        - vivid
+        - xenial
   categories:
     - packaging
     - system
