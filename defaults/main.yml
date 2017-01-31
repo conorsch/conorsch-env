@@ -20,11 +20,14 @@ conorsch_env_common_packages:
     - tree
 
 conorsch_env_common_graphical_packages:
+    - inotify-hookable
     - ipython
     - keepassx
+    - net-tools
     - network-manager
     - nitrogen
     - scdaemon
+    - xclip
 
 conorsch_env_pip_packages: []
 conorsch_env_ruby_gems: []
