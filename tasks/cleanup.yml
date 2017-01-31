@@ -11,6 +11,9 @@
     path: "{{ item.path }}"
     state: absent
   with_items: "{{ default_home_subdirs_check.results|default([]) }}"
+  # Sometimes folders or mounts have stronger ownership,
+  # so report fail but don't bail out.
+  ignore_errors: yes
   # Need a 'definedness' check in case the dir wasn't found,
   # in which case the 'path' parameter won't exist.
   when: item.path is defined and
