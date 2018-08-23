@@ -1,0 +1,8 @@
+---
+- name: Manage git config
+  git_config:
+    scope: global
+    name: "{{ item.key }}"
+    value: "{{ item.value }}"
+  with_dict: "{{ conorsch_env_git_config }}"
+

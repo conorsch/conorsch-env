@@ -1,5 +1,2 @@
 ---
-- name: kosssi.gitconfig
-  src: https://github.com/kosssi/ansible-role-gitconfig
-
 - name: conorsch.homeshick

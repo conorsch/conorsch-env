@@ -43,3 +43,15 @@ conorsch_env_home_subdir_backlist:
   - Public
   - Templates
   - Videos
+
+conorsch_env_git_config:
+  user.name: Conor Schaefer
+  user.mail: "{{ conorsch_env_git_email }}"
+  pull.rebase: 'true'
+  # Perform integrity checks by default; see:
+  # https://groups.google.com/forum/#!topic/binary-transparency/f-BI4o
+  transfer.fsckobjects: 'true'
+  fetch.fsckobjects: 'true'
+  receive.fsckobjects: 'true'
+  status.submodulesummary: 'true'
+  diff.submodule: log

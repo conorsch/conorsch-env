@@ -15,5 +15,4 @@ galaxy_info:
   categories:
     - packaging
     - system
-dependencies:
-  - role: kosssi.gitconfig
+dependencies: []
