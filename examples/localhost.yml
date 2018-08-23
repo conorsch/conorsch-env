@@ -4,4 +4,6 @@
   connection: local
   roles:
     - role: conorsch-env
-      conorsch_env_include_graphical_packages: true
+
+    - role: conorsch.homeshick
+      tags: homeshick
