@@ -3,6 +3,9 @@ set -e
 #set -u
 set -o pipefail
 
+# Look up location, for reference to relpaths
+script_path="$(realpath "$0")"
+script_dir="$(dirname "$script_path")"
 
 function is_installed() {
     hash "$1" > /dev/null 2>&1
@@ -17,20 +20,23 @@ function is_likely_qubes() {
 }
 
 function configure_venv() {
-    tmp_venv="$(mktemp -d)"
+    #tmp_venv="$(mktemp -d)"
+    tmp_venv="${script_dir}/venv"
     system_packages=""
     # Virtualenvs in Qubes have trouble discovering python-apt modules;
     if is_likely_qubes ; then
         system_packages="--system-site-packages"
     fi
-    virtualenv "$tmp_venv" "${system_packages}" --quiet
+    if [[ ! -d "$tmp_venv" ]] ; then
+        virtualenv "$tmp_venv" "${system_packages}" --quiet
+    fi
     source "${tmp_venv}/bin/activate"
 }
 
 function run_ansible() {
-    mkdir -p .roles
-    pipenv run ansible-galaxy install -r requirements.yml > /dev/null 2>&1
-    pipenv run ansible-playbook examples/localhost.yml
+    mkdir -p "${script_dir}/.roles"
+    pipenv run ansible-galaxy install -r "${script_dir}/requirements.yml" > /dev/null 2>&1
+    pipenv run ansible-playbook "${script_dir}/examples/localhost.yml"
 }
 
 printf "Checking if pip is installed... "
@@ -52,6 +58,7 @@ fi
 
 
 printf "Checking if ansible is installed... "
+configure_venv
 if ! is_installed ansible > /dev/null 2>&1 ; then
     printf "no, installing... "
     configure_venv
