@@ -15,22 +15,21 @@ conorsch_env_default_shell: /bin/bash
 conorsch_env_include_graphical_packages: false
 
 conorsch_env_common_packages:
-    - byobu
-    - htop
-    - tree
+  - byobu
+  - htop
+  - tree
 
 conorsch_env_common_graphical_packages:
-    - inotify-hookable
-    - ipython
-    - keepassx
-    - net-tools
-    - network-manager
-    - nitrogen
-    - scdaemon
-    - xclip
+  - inotify-hookable
+  - ipython
+  - keepassx
+  - net-tools
+  - network-manager
+  - nitrogen
+  - scdaemon
+  - xclip
 
 conorsch_env_pip_packages: []
-conorsch_env_ruby_gems: []
 conorsch_env_git_email: conor.schaefer@gmail.com
 
 # Default subdirectories may be present. If empty, remove them.

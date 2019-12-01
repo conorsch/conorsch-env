@@ -4,8 +4,6 @@
 - include: git_config.yml
   tags: git
 
-- include: rubygems.yml
-
 - include: graphical_packages.yml
   when: conorsch_env_include_graphical_packages == true
 
